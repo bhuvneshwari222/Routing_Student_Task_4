@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-12 text-right mb-4">
+        <button mat-raised-button color="accent">Add Student</button>
+    </div>
+    <div class="col-md-4">
+        <ul class="list-group" *ngIf="StdArr.length > 0; else noStd">
+            <li class="list-group-item" [routerLink]="std.studentId" routerLinkActive="active" [queryParams]="{
+                studentRole: std.studentRole
+            }" *ngFor="let std of StdArr">
+                {{std.studentName}}
+                <small class="badge" [ngClass]="{
+                    'badge-success': std.isActive,
+                    'badge-danger': !std.isActive
+                }">{{std.isActive ? 'Active' : 'InActive'}}</small>
+            </li>
+        </ul>
+        <ng-template #noStd>
+            <p class="alert alert-info">No Student Added Yet!!!</p>
+        </ng-template>
+    </div>
+    <div class="col-md-8">
+        <router-outlet></router-outlet>
+    </div>
+</div>

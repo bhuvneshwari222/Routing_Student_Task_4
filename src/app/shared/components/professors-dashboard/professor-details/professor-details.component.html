@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-5">
+        <mat-card class="m-0">
+            <mat-card-content>
+                <img class="profileImage" [src]="profObj.profileImage" [alt]="profObj.professorName">
+                <h2><b>{{profObj.professorName}}</b>({{profObj.designation}})</h2>
+                <p>{{profObj.biography}}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="col-md-7">
+        <mat-card>
+            <mat-card-content>
+                <h2 class="font-weight-bold">Basic Information</h2>
+                <p><b>Department:</b> {{profObj.department}}</p>
+                <p><b>Qualification:</b> {{profObj.qualification}}</p>
+                <p><b>Experience:</b> {{profObj.experienceYears}}</p>
+                <p><b>Status: </b> <small class="badge p-1" [ngClass]="{'badge-success':profObj.isActive, 'badge-danger': !profObj.isActive}">
+                    {{profObj.isActive ? 'Active' : 'InActive'}}
+                </small></p>
+            </mat-card-content>
+            <mat-divider></mat-divider>
+            <mat-card-actions>
+                <button mat-raised-button color="primary">Edit</button>
+                <button mat-raised-button color="warn">Remove</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

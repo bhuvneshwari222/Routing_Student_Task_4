@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-12 mb-4 text-right">
+        <button mat-raised-button color="accent">Add Professor</button>
+    </div>
+    <div class="col-md-4">
+        <ul class="list-group">
+            <li 
+            [routerLink]="prof.professorId"
+            routerLinkActive="active"
+            [queryParams]="{
+                department: prof.department
+            }"
+            class="list-group-item" *ngFor="let prof of profArr">
+                {{prof.professorName}}
+                <small class="badge" [ngClass]="{
+                    'badge-success': prof.isActive,
+                    'badge-danger': !prof.isActive
+                }">{{prof.isActive ? 'Active' : 'InActive'}}
+            </small>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-8">
+        <router-outlet></router-outlet>
+    </div>
+</div>

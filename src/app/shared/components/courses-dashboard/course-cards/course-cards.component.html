@@ -1,0 +1,10 @@
+<mat-card [queryParams]="{
+    courseType: courseObj.courseType
+}" routerLinkActive="active" [routerLink]="courseObj.courseId" class="course-card mb-4">
+    <mat-card-content>
+        <h1>{{courseObj.courseName}}</h1>
+        <div class="course-info">
+            <p class="m-0">CourseType: {{courseObj.courseType}}</p>
+        </div>
+    </mat-card-content>
+</mat-card>
