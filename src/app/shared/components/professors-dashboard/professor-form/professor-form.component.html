@@ -1,1 +1,87 @@
-<p>professor-form works!</p>
+<mat-card>
+    <mat-card-title>{{isInEditMode ? 'Update Professor' : 'Add Professor'}}</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="profForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="professorName">Professor Name</label>
+                <input formControlName="professorName" id="professorName" type="text" class="form-control">
+                <strong *ngIf="f['professorName'].touched && f['professorName'].hasError('required')"
+                    class="text-danger">
+                    Professor Name is a required field.
+                </strong>
+            </div>
+
+            <div class="form-group">
+                <label for="designation">Designation</label>
+                <select class="form-control" formControlName="designation" id="designation">
+                    <option *ngFor="let d of designationArr" [ngValue]="d">{{d}}</option>
+                </select>
+                <strong *ngIf="f['designation'].touched && f['designation'].hasError('required')" class="text-danger">
+                    Designation is a required field.
+                </strong>
+            </div>
+
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select class="form-control" formControlName="department" id="department">
+                    <option *ngFor="let dep of departmentArr" [ngValue]="dep">{{dep}}</option>
+                </select>
+                <strong *ngIf="f['department'].touched && f['department'].hasError('required')" class="text-danger">
+                    Department is a required field.
+                </strong>
+            </div>
+
+            <div class="form-group">
+                <label for="qualification">Qualification</label>
+                <input formControlName="qualification" id="qualification" type="text" class="form-control">
+                <strong *ngIf="f['qualification'].touched && f['qualification'].hasError('required')"
+                    class="text-danger">
+                    Qualification is a required field.
+                </strong>
+            </div>
+
+            <div class="form-group">
+                <label for="experienceYears">Experience Years</label>
+                <select class="form-control" formControlName="experienceYears" id="experienceYears">
+                    <option *ngFor="let exp of experienceYearsArr" [ngValue]="exp">{{exp}}</option>
+                </select>
+                <strong *ngIf="f['experienceYears'].touched && f['experienceYears'].hasError('required')" class="text-danger">
+                    Experience Years is a required field.
+                </strong>
+            </div>
+
+            <div class="form-group">
+                <label for="profileImage">Profile Image</label>
+                <input formControlName="profileImage" id="profileImage" type="text" class="form-control">
+                <strong *ngIf="f['profileImage'].touched && f['profileImage'].hasError('required')"
+                    class="text-danger">
+                    Profile Image is a required field.
+                </strong>
+            </div>
+
+            <div class="form-group">
+                <label for="biography">Biography</label>
+                <textarea formControlName="biography" id="biography" rows="4" class="form-control"></textarea>
+                <strong *ngIf="f['biography'].touched && f['biography'].hasError('required')"
+                    class="text-danger">
+                    Biography is a required field.
+                </strong>
+            </div>
+
+            <div class="form-group">
+                <label for="isActive">Is Active</label>
+                <select class="form-control" formControlName="isActive" id="isActive">
+                    <option [value]="true">Yes</option>
+                    <option [value]="false">No</option>
+                </select>
+                <strong *ngIf="f['isActive'].touched && f['isActive'].hasError('required')" class="text-danger">
+                    Is Active is a required field.
+                </strong>
+            </div>
+
+            <button *ngIf="!isInEditMode" type="submit" mat-raised-button color="primary" class="w-100">Add Professor</button>
+            <button (click)="onUpdate()" *ngIf="isInEditMode" type="button" mat-raised-button color="primary" class="w-100">Update Professor</button>
+
+        </form>
+    </mat-card-content>
+</mat-card>

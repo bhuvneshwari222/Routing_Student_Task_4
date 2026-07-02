@@ -1,1 +1,156 @@
-<p>std-form works!</p>
+<mat-card>
+    <mat-card-title>{{isInEditMode ? 'Update Student' : 'Add Student'}}</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="studentName">Student Name</label>
+                <input formControlName="studentName" id="studentName" type="text" class="form-control">
+                <strong *ngIf="f['studentName'].touched && f['studentName'].hasError('required')" class="text-danger">
+                    Student Name is a required field.
+                </strong>
+            </div>
+
+            <div class="form-group">
+                <label for="studentRole">Student Role</label>
+                <input formControlName="studentRole" id="studentRole" type="text" class="form-control">
+                <strong *ngIf="f['studentRole'].touched && f['studentRole'].hasError('required')" class="text-danger">
+                    Student Role is a required field.
+                </strong>
+            </div>
+
+            <div class="form-group">
+                <label for="profileImage">Profile Image</label>
+                <input formControlName="profileImage" id="profileImage" type="text" class="form-control">
+                <strong *ngIf="f['profileImage'].touched && f['profileImage'].hasError('required')" class="text-danger">
+                    Profile Imageis a required field.
+                </strong>
+            </div>
+
+            <div class="form-group">
+                <label for="profileDescription">Profile Description</label>
+                <textarea formControlName="profileDescription" id="profileDescription" class="form-control"></textarea>
+                <strong *ngIf="f['profileDescription'].touched && f['profileDescription'].hasError('required')"
+                    class="text-danger">
+                    profileDescription is a required field.
+                </strong>
+            </div>
+
+            <div class="form-group">
+                <label for="isActive">Is Active</label>
+                <select class="form-control" formControlName="isActive" id="isActive">
+                    <option [value]="true">Yes</option>
+                    <option [value]="false">No</option>
+                </select>
+                <strong *ngIf="f['isActive'].touched && f['isActive'].hasError('required')" class="text-danger">
+                    Is Active is a required field.
+                </strong>
+            </div>
+
+            <div formArrayName="skills">
+                <h2>Skills</h2>
+                <div class="row" *ngFor="let skill of skillsArr.controls; let i = index">
+                    <div class="col-10">
+                        <div class="form-group">
+                            <input [formControlName]="i" [id]="'skill-' + i" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <button *ngIf="i > 0" (click)="removeSkill(i)" class="btn btn-sm btn-outline-danger">Remove</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" (click)="addSkill()" mat-raised-button color="primary">Add Skill</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-2" formGroupName="address">
+                <div class="col-md-6">
+                    <h2>Current Address</h2>
+                    <div formGroupName="current">
+                        <div class="form-group">
+                            <label for="c-country">Country</label>
+                            <input formControlName="country" id="c-country" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="c-state">State</label>
+                            <input formControlName="state" id="c-state" type="text" class="form-control">
+                            <strong
+                                *ngIf="currAddControls['state'].touched && currAddControls['state'].hasError('required')"
+                                class="text-danger">
+                                State is a required field.
+                            </strong>
+                        </div>
+                        <div class="form-group">
+                            <label for="c-city">City</label>
+                            <input formControlName="city" id="c-city" type="text" class="form-control">
+                            <strong
+                                *ngIf="currAddControls['city'].touched && currAddControls['city'].hasError('required')"
+                                class="text-danger">
+                                City is a required field.
+                            </strong>
+                        </div>
+                        <div class="form-group">
+                            <label for="c-zipcode">Zipcode</label>
+                            <input formControlName="zipcode" id="c-zipcode" type="text" class="form-control">
+                            <strong
+                                *ngIf="currAddControls['zipcode'].touched && currAddControls['zipcode'].hasError('required')"
+                                class="text-danger">
+                                Zipcode is a required field.
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h2>Permanent Address</h2>
+                    <div formGroupName="permanent">
+                        <div class="form-group">
+                            <label for="p-country">Country</label>
+                            <input formControlName="country" id="p-country" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="p-state">State</label>
+                            <input formControlName="state" id="p-state" type="text" class="form-control">
+                            <strong
+                                *ngIf="perAddControls['state'].touched && perAddControls['state'].hasError('required')"
+                                class="text-danger">
+                                State is a required field.
+                            </strong>
+                        </div>
+                        <div class="form-group">
+                            <label for="p-city">City</label>
+                            <input formControlName="city" id="p-city" type="text" class="form-control">
+                            <strong
+                                *ngIf="perAddControls['city'].touched && perAddControls['city'].hasError('required')"
+                                class="text-danger">
+                                City is a required field.
+                            </strong>
+                        </div>
+                        <div class="form-group">
+                            <label for="p-zipcode">Zipcode</label>
+                            <input formControlName="zipcode" id="p-zipcode" type="text" class="form-control">
+                            <strong
+                                *ngIf="perAddControls['zipcode'].touched && perAddControls['zipcode'].hasError('required')"
+                                class="text-danger">
+                                Zipcode is a required field.
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="isAddressSame">
+                    <input formControlName="isAddressSame" id="isAddressSame" type="checkbox"> Is Address Same
+                </label>
+            </div>
+
+            <button *ngIf="!isInEditMode" type="submit" mat-raised-button color="primary" class="w-100">Add
+                Student</button>
+            <button (click)="onUpdate()" *ngIf="isInEditMode" type="button" mat-raised-button color="primary"
+                class="w-100">Update Student</button>
+
+        </form>
+    </mat-card-content>
+</mat-card>

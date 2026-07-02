@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { IProfessor } from 'src/app/shared/models/professor';
 import { ProfessorsService } from 'src/app/shared/services/professors.service';
 import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
+import { GetConfirmComponent } from '../../get-confirm/get-confirm.component';
 
 @Component({
   selector: 'app-professor-details',
@@ -16,7 +18,8 @@ export class ProfessorDetailsComponent implements OnInit {
   constructor(
     private _profService: ProfessorsService,
     private _routes: ActivatedRoute,
-    private _snackBar: SnackBarService
+    private _snackBar: SnackBarService,
+    private _matDialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -38,6 +41,31 @@ export class ProfessorDetailsComponent implements OnInit {
           })
       }
     })
+  }
+
+  onRemove() {
+    let config = new MatDialogConfig();
+    config.data = `Are you sure you want to remove this professor?`;
+    config.disableClose = true;
+    config.width = '400px';
+    let matDialogRef = this._matDialog.open(GetConfirmComponent, config);
+    matDialogRef.afterClosed()
+      .subscribe({
+        next: resp => {
+          if (resp) {
+            this._profService.removeProfessor(this.profId)
+              .subscribe({
+                next: resp => {
+                  this._snackBar.openSnackBar(resp.msg);
+                  this._profService.setFirstProfSelectedSub$.next(true);
+                },
+                error: err => {
+                  this._snackBar.openSnackBar(err.msg);
+                }
+              })
+          }
+        }
+      })
   }
 
 }

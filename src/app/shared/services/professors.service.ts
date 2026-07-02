@@ -13,7 +13,7 @@ export class ProfessorsService {
       designation: "Professor",
       department: "Computer Science",
       qualification: "Ph.D.",
-      experienceYears: "18 Years",
+      experienceYears: "16 to 20 Years",
       profileImage: "https://static.vecteezy.com/system/resources/thumbnails/060/766/513/small/a-cartoon-illustration-of-a-man-with-a-neat-hairstyle-beard-and-business-attire-png.png",
       biography:
         "Experienced professor specializing in Software Engineering and Web Technologies.",
@@ -26,7 +26,7 @@ export class ProfessorsService {
       designation: "Associate Professor",
       department: "Information Technology",
       qualification: "Ph.D.",
-      experienceYears: "12 Years",
+      experienceYears: "11 to 15 Years",
       profileImage: "https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001877.png",
       biography:
         "Expert in Artificial Intelligence and Machine Learning.",
@@ -39,7 +39,7 @@ export class ProfessorsService {
       designation: "Assistant Professor",
       department: "Computer Science",
       qualification: "M.Tech",
-      experienceYears: "6 Years",
+      experienceYears: "6 to 10 Years",
       profileImage: "https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001882.png",
       biography:
         "Frontend developer turned academician with expertise in Angular and TypeScript.",
@@ -64,7 +64,7 @@ export class ProfessorsService {
   addProfessor(newProf: IProfessor): Observable<IProfessorResp<IProfessor>> {
     this.professorsArr.unshift(newProf);
     return of({
-      msg: `The new Professor ${newProf.professorName} is added successfully!!!`,
+      msg: `Professor ${newProf.professorName} is added successfully!!!`,
       data: newProf
     });
   }
@@ -73,7 +73,7 @@ export class ProfessorsService {
     let getIndex = this.professorsArr.findIndex(s => s.professorId === id);
     let removedProf = this.professorsArr.splice(getIndex, 1);
     return of({
-      msg: `The professor ${removedProf[0].professorName} with id ${id} is removed successfully!!!`,
+      msg: `Professor ${removedProf[0].professorName} with id ${id} is removed successfully!!!`,
       data: removedProf[0]
     })
   }
@@ -82,7 +82,7 @@ export class ProfessorsService {
     let getIndex = this.professorsArr.findIndex(s => s.professorId === updatedProf.professorId);
     this.professorsArr[getIndex] = updatedProf;
     return of({
-      msg: `The professor ${updatedProf.professorName} with id ${updatedProf.professorId} is updated successfully!!!`,
+      msg: `Professor ${updatedProf.professorName} with id ${updatedProf.professorId} is updated successfully!!!`,
       data: updatedProf
     })
   }

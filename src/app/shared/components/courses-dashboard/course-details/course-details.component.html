@@ -1,1 +1,17 @@
-<p>course-details works!</p>
+<mat-card class="p-0">
+    <mat-card-content>
+        <div class="course-info">
+            <figure class="banner m-0" [ngStyle]="{
+            'background-image': 'linear-gradient(0deg, #000 1%, transparent), url(' + courseObj.courseImage + ')'}">
+                <figcaption>
+                    <p><b>Status:</b> {{courseObj.courseStatus}}</p>
+                    <p><b>Certificate:</b> {{courseObj.isCertificateAvailable ? 'Available' : 'Not Available'}}</p>
+                    <p><b>Credits:</b> {{courseObj.credits}}</p>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="description p-3">
+            <p>{{courseObj.description}}</p>
+        </div>
+    </mat-card-content>
+</mat-card>

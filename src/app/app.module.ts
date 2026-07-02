@@ -22,11 +22,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { StdFormComponent } from './shared/components/std-dashboard/std-form/std-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StdDashboardComponent,
+    StdFormComponent,
     NavbarComponent,
     GetConfirmComponent,
     HomeDashboardComponent,

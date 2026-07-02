@@ -16,8 +16,8 @@ export class CoursesService {
       duration: "12 Weeks",
       courseType: "Online",
       description:
-        "Learn Angular from fundamentals to advanced concepts including Routing, Reactive Forms, RxJS, and REST APIs.",
-      courseImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
+        "Learn Angular from the ground up by building real-world web applications from scratch. Understand components, directives, pipes, services, dependency injection, routing, reactive forms, RxJS, and HTTP services in depth. Gain hands-on experience with Angular Material, state management, lazy loading, and REST API integration. Work on multiple mini-projects and a final capstone application to strengthen your practical skills. By the end of the course, you'll be confident in developing scalable, responsive, and production-ready single-page applications while following Angular best practices.",
+      courseImage: "https://ict-trainings.com/storage/app/public/course/banner_5c88b1428edb1.jpg"
     },
     {
       courseId: "CRS102",
@@ -28,8 +28,8 @@ export class CoursesService {
       duration: "16 Weeks",
       courseType: "Offline",
       description:
-        "Master arrays, linked lists, trees, graphs, dynamic programming, and interview problem-solving.",
-      courseImage: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4"
+        "Build a strong foundation in data structures and algorithms through interactive lectures and coding exercises. Learn arrays, linked lists, stacks, queues, trees, graphs, heaps, hashing, recursion, greedy algorithms, and dynamic programming. Improve your logical thinking by solving real interview questions and competitive programming challenges. Analyze time and space complexity to write optimized solutions for different scenarios. This course is ideal for students preparing for coding interviews, placements, and software engineering roles.",
+      courseImage: "https://s3.amazonaws.com/coursesity-blog/2020/07/data-structure-algorithm-courses.png"
     },
     {
       courseId: "CRS103",
@@ -40,8 +40,8 @@ export class CoursesService {
       duration: "10 Weeks",
       courseType: "Hybrid",
       description:
-        "Understand relational databases, SQL, normalization, indexing, and transaction management.",
-      courseImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71"
+        "Understand the core concepts of relational database management systems and their real-world applications. Learn SQL from beginner to advanced level, including joins, subqueries, views, stored procedures, and triggers. Explore normalization, indexing, transactions, concurrency control, and database security to design efficient systems. Work on practical database projects using industry-standard tools and datasets. By completing this course, you'll be able to create, manage, and optimize databases for modern web and enterprise applications.",
+      courseImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqbkzPfMB9ubf_Vzc2yN2mAEy7Pstk07sI-pWdMJhnM6ltoXcylNGv4BA&s=10"
     },
     {
       courseId: "CRS104",
@@ -52,8 +52,8 @@ export class CoursesService {
       duration: "14 Weeks",
       courseType: "Online",
       description:
-        "Explore AWS fundamentals, virtualization, cloud deployment models, and cloud security concepts.",
-      courseImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa"
+        "Discover the fundamentals of cloud computing and modern infrastructure used by leading technology companies. Learn AWS services, virtualization, cloud deployment models, networking, storage solutions, identity management, and cloud security best practices. Understand how organizations migrate applications to the cloud while ensuring high availability and scalability. Gain practical experience by deploying applications, managing cloud resources, and monitoring cloud environments through hands-on projects. This course equips you with the knowledge required for entry-level cloud engineering and DevOps roles.",
+      courseImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjjNpj4LEZ4FpzMLNog3_YvOe7N3Jn8gDPlL5z0wzCXbfZ3Jn4GdWnqVA1&s=10"
     }
   ];
 

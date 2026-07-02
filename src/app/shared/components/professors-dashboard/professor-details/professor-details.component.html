@@ -21,8 +21,8 @@
             </mat-card-content>
             <mat-divider></mat-divider>
             <mat-card-actions>
-                <button mat-raised-button color="primary">Edit</button>
-                <button mat-raised-button color="warn">Remove</button>
+                <button routerLink="edit" mat-raised-button color="primary">Edit</button>
+                <button (click)="onRemove()" mat-raised-button color="warn">Remove</button>
             </mat-card-actions>
         </mat-card>
     </div>

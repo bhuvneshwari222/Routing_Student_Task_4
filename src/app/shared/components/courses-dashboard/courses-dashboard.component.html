@@ -2,4 +2,7 @@
     <div class="col-md-4">
         <app-course-cards *ngFor="let course of courseArr" [courseObj]="course"></app-course-cards>
     </div>
+    <div class="col-md-8">
+        <router-outlet></router-outlet>
+    </div>
 </div>
