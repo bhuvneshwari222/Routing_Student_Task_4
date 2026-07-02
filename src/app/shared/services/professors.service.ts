@@ -27,7 +27,7 @@ export class ProfessorsService {
       department: "Information Technology",
       qualification: "Ph.D.",
       experienceYears: "11 to 15 Years",
-      profileImage: "https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001877.png",
+      profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6fVfwXiOjr6c7MC_mrrTsoCMfsUqHQ4AtHNN5suAzOw&s=10",
       biography:
         "Expert in Artificial Intelligence and Machine Learning.",
       isTenured: true,
