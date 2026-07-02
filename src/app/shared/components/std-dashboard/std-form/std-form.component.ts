@@ -27,7 +27,6 @@ export class StdFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.addSkill();
     this.isAddressSameHandler();
     this.currentAddressHandler();
     this.patchStudentDetails();
@@ -126,24 +125,25 @@ export class StdFormComponent implements OnInit {
   }
 
   patchStudentDetails() {
-    this.studentId = this._routes.snapshot.paramMap.get('StdID')!;
-    if (this.studentId) {
-      this._studentService.fetchStudentById(this.studentId)
-        .subscribe({
-          next: resp => {
-            this.isInEditMode = true;
-            this.studentObj = resp;
-            this.studentForm.patchValue(resp)
-            this._utility.patchFormArr(resp.skills, this.skillsArr)
-          },
-          error: err => {
-            this._snackBar.openSnackBar(err);
-          }
-        })
-    }
-    }
+    this.studentId = this._routes.snapshot.paramMap.get('stdID')!;
+    this._studentService.fetchStudentById(this.studentId)
+      .subscribe({
+        next: resp => {
+          this.isInEditMode = true;
+          this.studentObj = resp;
+          this._utility.patchFormArr(resp.skills, this.skillsArr)
+          this.studentForm.patchValue(resp)
+        },
+        error: err => {
+          this._snackBar.openSnackBar(err);
+        }
+      })
+  }
 
-    onUpdate() {
+  onUpdate() {
+    if (this.studentForm.invalid) {
+      return this.studentForm.markAllAsTouched();
+    } else {
       let updatedStudent: Istudent = { ...this.studentForm.getRawValue(), studentId: this.studentId }
       this._studentService.updateStudent(updatedStudent)
         .subscribe({
@@ -161,3 +161,4 @@ export class StdFormComponent implements OnInit {
         })
     }
   }
+}
