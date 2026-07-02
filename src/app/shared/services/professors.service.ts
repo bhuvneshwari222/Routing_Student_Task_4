@@ -8,19 +8,6 @@ import { Observable, of, Subject } from 'rxjs';
 export class ProfessorsService {
   professorsArr: IProfessor[] = [
     {
-      professorId: "PRO101",
-      professorName: "Dr. Anil Mehta",
-      designation: "Professor",
-      department: "Computer Science",
-      qualification: "Ph.D.",
-      experienceYears: "16 to 20 Years",
-      profileImage: "https://static.vecteezy.com/system/resources/thumbnails/060/766/513/small/a-cartoon-illustration-of-a-man-with-a-neat-hairstyle-beard-and-business-attire-png.png",
-      biography:
-        "Experienced professor specializing in Software Engineering and Web Technologies.",
-      isTenured: true,
-      isActive: true
-    },
-    {
       professorId: "PRO102",
       professorName: "Dr. Sneha Kulkarni",
       designation: "Associate Professor",
@@ -30,6 +17,19 @@ export class ProfessorsService {
       profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6fVfwXiOjr6c7MC_mrrTsoCMfsUqHQ4AtHNN5suAzOw&s=10",
       biography:
         "Expert in Artificial Intelligence and Machine Learning.",
+      isTenured: true,
+      isActive: true
+    },
+    {
+      professorId: "PRO101",
+      professorName: "Dr. Anil Mehta",
+      designation: "Professor",
+      department: "Computer Science",
+      qualification: "Ph.D.",
+      experienceYears: "16 to 20 Years",
+      profileImage: "https://static.vecteezy.com/system/resources/thumbnails/060/766/513/small/a-cartoon-illustration-of-a-man-with-a-neat-hairstyle-beard-and-business-attire-png.png",
+      biography:
+        "Experienced professor specializing in Software Engineering and Web Technologies.",
       isTenured: true,
       isActive: true
     },
