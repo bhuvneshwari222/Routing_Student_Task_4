@@ -20,9 +20,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { StdFormComponent } from './shared/components/std-dashboard/std-form/std-form.component';
+import { AuthComponent } from './shared/components/auth/auth.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import { StdFormComponent } from './shared/components/std-dashboard/std-form/std
     CourseCardsComponent,
     ProfessorFormComponent,
     ProfessorDetailsComponent,
-    StdDetailsComponent
+    StdDetailsComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,9 @@ import { StdFormComponent } from './shared/components/std-dashboard/std-form/std
     MatDialogModule,
     MatChipsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

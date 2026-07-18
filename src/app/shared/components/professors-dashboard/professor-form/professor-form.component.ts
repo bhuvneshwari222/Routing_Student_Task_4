@@ -133,4 +133,13 @@ export class ProfessorFormComponent implements OnInit {
     }
   }
 
+  canDeactivate(){
+    if(this.profForm.dirty && this.isInEditMode){
+      let confirmation = confirm(`Are you sure, you want to discard this changes?`)
+      return confirmation;
+    }else{
+      return true;
+    }
+  }
+
 }

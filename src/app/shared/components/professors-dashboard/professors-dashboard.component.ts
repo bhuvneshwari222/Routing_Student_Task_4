@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProfessor } from '../../models/professor';
 import { ProfessorsService } from '../../services/professors.service';
 import { SnackBarService } from '../../services/snack-bar.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-professors-dashboard',
@@ -15,11 +15,15 @@ export class ProfessorsDashboardComponent implements OnInit {
   constructor(
     private _profService: ProfessorsService,
     private _snackBar: SnackBarService,
-    private _router: Router
-  ) { }
+    private _router: Router,
+    private _route: ActivatedRoute
+  ) {
+    this.profArr = this._route.snapshot.data['professors'];
+    this.setFirstProfSelected();
+   }
 
   ngOnInit(): void {
-    this.getProfArr();
+    // this.getProfArr();
     this._profService.setFirstProfSelectedSub$.subscribe(resp => {
       if (resp) {
         this.setFirstProfSelected();

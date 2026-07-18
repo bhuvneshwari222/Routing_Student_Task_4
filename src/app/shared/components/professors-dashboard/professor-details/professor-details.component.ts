@@ -20,10 +20,14 @@ export class ProfessorDetailsComponent implements OnInit {
     private _routes: ActivatedRoute,
     private _snackBar: SnackBarService,
     private _matDialog: MatDialog
-  ) { }
+  ) { 
+    this._routes.data.subscribe(data =>{
+      this.profObj = data['professor']
+    })
+  }
 
   ngOnInit(): void {
-    this.getProfesor();
+    // this.getProfesor();
   }
 
   getProfesor() {

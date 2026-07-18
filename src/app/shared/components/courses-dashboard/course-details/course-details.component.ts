@@ -17,10 +17,14 @@ export class CourseDetailsComponent implements OnInit {
     private _courseService: CoursesService,
     private _routes: ActivatedRoute,
     private _snackBar: SnackBarService
-  ) { }
+  ) {
+    this._routes.data.subscribe(data =>{
+      this.courseObj = data['course'];
+    })
+   }
 
   ngOnInit(): void {
-    this.getCourse()
+    // this.getCourse()
   }
 
   getCourse() {

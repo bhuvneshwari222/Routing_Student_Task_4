@@ -9,19 +9,35 @@ import { ProfessorFormComponent } from "./shared/components/professors-dashboard
 import { ProfessorDetailsComponent } from "./shared/components/professors-dashboard/professor-details/professor-details.component";
 import { CoursesDashboardComponent } from "./shared/components/courses-dashboard/courses-dashboard.component";
 import { CourseDetailsComponent } from "./shared/components/courses-dashboard/course-details/course-details.component";
+import { CourseResolver } from "./shared/services/courses.resolver";
+import { ProfessorResolver } from "./shared/services/professors.resolver";
+import { AuthComponent } from "./shared/components/auth/auth.component";
+import { AuthGuard } from "./shared/services/auth.guard";
+import { UserRoleGuard } from "./shared/services/userRole.guard";
+import { CanDeactivateGuard } from "./shared/services/canDeactivate.guard";
 
 let routes: Routes = [
     {
         path: '',
-        component: HomeDashboardComponent
+        component: AuthComponent
     },
     {
         path: 'home',
-        component: HomeDashboardComponent
+        component: HomeDashboardComponent,
+        title: 'Home',
+        canActivate: [AuthGuard, UserRoleGuard],
+        data: {
+            userRoles: ['admin', 'superAdmin', 'buyer']
+        }
     },
     {
         path: 'students',
         component: StdDashboardComponent,
+        canActivate: [AuthGuard, UserRoleGuard],
+        title: 'Student',
+        data: {
+            userRoles: ['admin', 'superAdmin', 'buyer']
+        },
         children: [
             {
                 path: 'addStudent',
@@ -33,13 +49,22 @@ let routes: Routes = [
             },
             {
                 path: ':stdID/edit',
-                component: StdFormComponent
+                component: StdFormComponent,
+                canDeactivate: [CanDeactivateGuard]
             }
         ]
     },
     {
         path: 'professors',
         component: ProfessorsDashboardComponent,
+        title: 'Professors',
+        canActivate: [AuthGuard, UserRoleGuard],
+        resolve: {
+            professors: ProfessorResolver
+        },
+        data: {
+            userRoles: ['admin', 'superAdmin']
+        },
         children: [
             {
                 path: 'addProfessor',
@@ -47,21 +72,36 @@ let routes: Routes = [
             },
             {
                 path: ':profID',
-                component: ProfessorDetailsComponent
+                component: ProfessorDetailsComponent,
+                resolve: {
+                    professor: ProfessorResolver
+                },
             },
             {
                 path: ':profID/edit',
-                component: ProfessorFormComponent
+                component: ProfessorFormComponent,
+                canDeactivate: [CanDeactivateGuard]
             }
         ]
     },
     {
         path: 'courses',
         component: CoursesDashboardComponent,
+        title: 'Courses',
+        canActivate: [AuthGuard, UserRoleGuard],
+        resolve: {
+            courses: CourseResolver
+        },
+        data: {
+            userRoles: ['superAdmin']
+        },
         children: [
             {
                 path: ':courseID',
-                component: CourseDetailsComponent
+                component: CourseDetailsComponent,
+                resolve: {
+                    course: CourseResolver
+                },
             }
         ]
     }
@@ -71,4 +111,4 @@ let routes: Routes = [
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
-export class AppRoutingModule{}
+export class AppRoutingModule { }
